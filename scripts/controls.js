@@ -1,12 +1,6 @@
 const ThrottleUpButton = document.getElementById("ThrottleUpButton");
 const ThrottleDownButton = document.getElementById("ThrottleDownButton");
 
-document.addEventListener("wheel", (Event) => {
-    const CurrentThrottle = parseFloat(document.body.getAttribute("THR"));
-    const NewThrottle = Math.min(Math.max(CurrentThrottle + (-Event.deltaY / 25), 0), 100);
-    document.body.setAttribute("THR", NewThrottle);
-});
-
 document.addEventListener("keypress", (Event) => {
     if (Event.key.toLowerCase() === "w") {
         document.body.setAttribute("THR", 15);

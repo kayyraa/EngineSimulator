@@ -11,6 +11,8 @@
         <script type="module" src="./scripts/controls.js"></script>
         <script type="module" src="./scripts/save.js"></script>
         <script type="module" src="./scripts/drive.js"></script>
+        <script type="module" src="./scripts/graph.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
         <link rel="stylesheet" href="./scripts/style/style.css">
         <link rel="shortcut icon" href="./images/ES.svg" type="image/x-icon">
@@ -48,7 +50,7 @@
                 </div>
                 <div>
                     <span>SPEED</span>
-                    <dial id="SPDDIAL" prefix="kph" value="0" min="0" max="200"></dial>
+                    <dial id="SPDDIAL" prefix="kph" value="0" min="0" max="400"></dial>
                 </div>
                 <div>
                     <span>FUEL</span>
@@ -63,6 +65,26 @@
             <div id="EngineVisualizer">
                 <h1>Visual</h1>
                 <div id="EngineVisual"></div>
+                <div>
+                    <div id="Graphs">
+                        <div>
+                            <span>RPM</span>
+                            <canvas id="StrokeGraph"></canvas>
+                        </div>
+                        <div>
+                            <span>SPEED</span>
+                            <canvas id="SpeedGraph"></canvas>
+                        </div>
+                        <div>
+                            <span>FUEL</span>
+                            <canvas id="FuelGraph"></canvas>
+                        </div>
+                        <div>
+                            <span>STROKE</span>
+                            <canvas id="TimingGraph"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

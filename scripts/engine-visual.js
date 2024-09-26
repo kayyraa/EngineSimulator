@@ -37,6 +37,7 @@ function LoadEngine() {
     const Liters = (Cylinders * PistonVolume) / 1000;
 
     window.EngineStats = {
+        Cylinders: Cylinders,
         PR: PistonRadius,
         PV: PistonVolume,
         Liters: Liters
@@ -56,8 +57,15 @@ StartEngineButton.addEventListener("click", () => {
         function Loop() {
             if (document.body.getAttribute("ON") !== "true") return;
 
+            const FUEL = parseFloat(document.body.getAttribute("FUEL"));
+
             const RPM = Math.min(parseInt(document.body.getAttribute("RPM")) + 5, parseInt(document.body.getAttribute("RED")));
             const RED = parseInt(document.body.getAttribute("RED"));
+
+            if (FUEL <= 0) {
+                document.body.setAttribute("ON", "false");
+                return;
+            }
 
             const Piston = Pistons[Timing];
             if (Piston) {

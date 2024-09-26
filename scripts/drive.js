@@ -10,7 +10,7 @@ GearUpButton.addEventListener("click", () => {
 
     if (Gear < MaxGear) {
         const Rpm = parseInt(document.body.getAttribute("RPM"));
-        document.body.setAttribute("RPM", Rpm - (Rpm / MaxGear));
+        document.body.setAttribute("RPM", Rpm - (Rpm / MaxGear + Gear));
         document.body.setAttribute("GEAR", Gear + 1);
     }
 });
@@ -31,13 +31,20 @@ function Loop() {
     const Rpm = parseInt(document.body.getAttribute("RPM"));
 
     if (Gear > 0) {
-        Speed += (Rpm / (Gear * 10)) / 1000;
+        const NewRPM = Rpm - (Rpm / (Gear * 100)) / 1000;
+        document.body.setAttribute("RPM", NewRPM);
+        Speed += (Rpm / (Gear * 25)) / 1000;
     } else {
         if (Speed > 0) {
-            Speed -= 0.125;
+            Speed -= 0.25;
         }
     }
+    window.Speed = Speed;
     SpeedDial.setAttribute("value", Speed);
+
+    if (Speed > SpeedDial.getAttribute("max")) {
+        SpeedDial.setAttribute("max", Speed);
+    }
 
     requestAnimationFrame(Loop);
 }
