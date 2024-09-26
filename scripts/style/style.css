@@ -1,0 +1,126 @@
+@import url("./fonts.css");
+
+body {
+    background-color: rgb(40, 40, 40);
+    color: white;
+    overflow: hidden;
+    font-family: "ENGSIM";
+}
+
+button {
+    font-family: "ENGSIM";
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+dial {
+    display: flex;
+    margin: 0 auto;
+
+    width: 10vh;
+    aspect-ratio: 1 / 1;
+    background-color: rgb(50, 50, 50);
+}
+
+#EngineContainer {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+#EngineVisualizer {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+
+    width: 50%;
+    height: 100%;
+}
+
+#EngineControls {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+
+    width: 25%;
+    height: 100%;
+}
+
+#EngineStats {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    box-sizing: border-box;
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+
+    width: 25%;
+    height: 100%;
+}
+
+#EngineControls > div > span {
+    font-size: 2vh;
+}
+
+#EngineContainer > div > h1 {
+    margin-left: 3vh;
+    font-size: 2vh;
+    font-weight: lighter;
+}
+
+#EngineControls > div > button {
+    box-sizing: border-box;
+    font-size: 2em;
+}
+
+#EngineContainer > div > div {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+#EngineVisual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#EngineVisual div {
+    margin-top: 1vh;
+
+    align-content: center;
+
+    width: 10vh;
+    font-size: 4vh;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255, 0.25);
+
+    opacity: 0.25;
+}

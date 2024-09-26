@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EngineSimulator</title>
+
+        <script type="module" src="./scripts/engine-visual.js"></script>
+        <script type="module" src="./scripts/engine-sound.js"></script>
+        <script type="module" src="./scripts/dials.js"></script>
+        <script type="module" src="./scripts/loop.js"></script>
+        <script type="module" src="./scripts/hud.js"></script>
+        <script type="module" src="./scripts/controls.js"></script>
+        <script type="module" src="./scripts/save.js"></script>
+        <script type="module" src="./scripts/drive.js"></script>
+
+        <link rel="stylesheet" href="./scripts/style/style.css">
+        <link rel="shortcut icon" href="./images/ES.svg" type="image/x-icon">
+    </head>
+    <body RPM="0" RED="6000" IDLE="500" FUEL="100" THR="0" ON="false" GEAR="0" TRANS="6" CYL="4" PISW="16" PISH="4">
+        <div id="EngineContainer">
+            <div id="EngineControls">
+                <h1>Controls</h1>
+                <div>
+                    <span id="EngineLabel">Inline 4, 1.6L</span>
+                    <button id="ReloadButton">Reload</button>
+                </div>
+                <div>
+                    <button id="StartEngineButton">Ignition</button>
+                </div>
+                <div>
+                    <button id="ThrottleUpButton">Throttle Up</button>
+                    <button id="ThrottleDownButton">Throttle Down</button>
+                </div>
+                <div>
+                    <button id="GearUpButton">Gear Up</button>
+                    <button id="GearDownButton">Gear Down</button>
+                </div>
+                <div>
+                    <button id="SaveButton">SAVE</button>
+                    <button id="LoadButton">LOAD</button>
+                </div>
+            </div>
+            <div id="EngineStats">
+                <h1>Stats</h1>
+                <div id="RPMSTATS">
+                    <span>RPM</span>
+                    <span id="RPMLABEL"></span>
+                    <dial id="RPMDIAL" prefix="" value="0" min="0" max="6000"></dial>
+                </div>
+                <div>
+                    <span>SPEED</span>
+                    <dial id="SPDDIAL" prefix="kph" value="0" min="0" max="200"></dial>
+                </div>
+                <div>
+                    <span>FUEL</span>
+                    <span id="ECOLABEL">1.3L/s</span>
+                    <dial id="FUELDIAL" prefix="L" value="100" min="0" max="100"></dial>
+                </div>
+                <div>
+                    <span>Throttle</span>
+                    <dial id="THROTTLEDIAL" prefix="%" value="5" min="0" max="100"></dial>
+                </div>
+            </div>
+            <div id="EngineVisualizer">
+                <h1>Visual</h1>
+                <div id="EngineVisual"></div>
+            </div>
+        </div>
+    </body>
+</html>
