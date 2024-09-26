@@ -8,12 +8,16 @@ document.addEventListener("keypress", (Event) => {
         document.body.setAttribute("THR", 35);
     } else if (Event.key.toLowerCase() === "r") {
         document.body.setAttribute("THR", 50);
+    } else if (Event.key.toLowerCase() === "t") {
+        document.body.setAttribute("THR", 75);
+    } else if (Event.key.toLowerCase() === "y") {
+        document.body.setAttribute("THR", 100);
     }
 });
 
 document.addEventListener("keyup", (Event) => {
     const Key = Event.key.toLowerCase();
-    if (Key === "w" || Key === "e" || Key === "r") {
+    if (Key === "w" || Key === "e" || Key === "r" || Key === "t" || Key === "y") {
         document.body.setAttribute("THR", 0);
     }
 });

@@ -1,6 +1,7 @@
 const StartEngineButton = document.getElementById("StartEngineButton");
-const THROTTLEDIAL = document.getElementById("THROTTLEDIAL");
 const ECOLABEL = document.getElementById("ECOLABEL");
+
+const ThrottleValve = document.getElementById("ThrottleValve");
 
 const Random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -37,7 +38,7 @@ function Loop() {
     }
 
     const Consumption = document.body.getAttribute("ON") === "true" 
-        ? (window.EngineStats.Liters / window.EngineStats.PV) + ((RPM / 100) / IDLE) 
+        ? (window.EngineStats.Liters / window.EngineStats.PV) + ((RPM / 200) / IDLE) 
         : 0;
 
     const NewFuel = FUEL - Consumption;
@@ -46,7 +47,8 @@ function Loop() {
     ECOLABEL.innerHTML = `${(Consumption * window.EngineStats.Liters).toFixed(2)} L/s`;
     
     FUELDIAL.setAttribute("value", NewFuel);
-    THROTTLEDIAL.setAttribute("value", THR);
+
+    ThrottleValve.style.transform = `rotate(${(THR / 100) * 90}deg)`;
     
     setTimeout(Loop, 125);
 }

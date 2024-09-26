@@ -1,9 +1,8 @@
 Array.from(document.getElementsByTagName("dial")).forEach(Dial => {
     const Suffix = Dial.getAttribute("prefix");
 
-    const MaxValue = parseFloat(Dial.getAttribute("max"));
-    const MinValue = parseFloat(Dial.getAttribute("min"));
     const Value = parseFloat(Dial.getAttribute("value"));
+    const Percentage = Dial.hasAttribute("percentage");
 
     const Needle = document.createElement("img");
     Needle.src = "../images/Needle.svg";
@@ -30,7 +29,11 @@ Array.from(document.getElementsByTagName("dial")).forEach(Dial => {
         const DegreesForValue = -45 + (Value - MinValue) * DegreesPerValue;
         Needle.style.transform = `rotate(${DegreesForValue}deg)`;
 
-        ValueLabel.innerHTML = `${Value.toFixed(1)} ${Suffix}`;
+        if (Percentage) {
+            ValueLabel.innerHTML = `${Value.toFixed(1)} ${Suffix}<br>${((Value / MaxValue) * 100).toFixed(1)}%`;
+        } else {
+            ValueLabel.innerHTML = `${Value.toFixed(1)} ${Suffix}`;
+        }        
 
         requestAnimationFrame(Loop);
     }

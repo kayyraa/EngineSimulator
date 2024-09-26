@@ -1,11 +1,12 @@
 const GearUpButton = document.getElementById("GearUpButton");
 const GearDownButton = document.getElementById("GearDownButton");
 
+const GearLabel = document.getElementById("GearLabel");
+
 const SpeedDial = document.getElementById("SPDDIAL");
 
-const MaxGear = parseInt(document.body.getAttribute("TRANS"));
-
 GearUpButton.addEventListener("click", () => {
+    const MaxGear = parseInt(document.body.getAttribute("TRANS"));
     const Gear = parseInt(document.body.getAttribute("GEAR"));
 
     if (Gear < MaxGear) {
@@ -16,6 +17,7 @@ GearUpButton.addEventListener("click", () => {
 });
 
 GearDownButton.addEventListener("click", () => {
+    const MaxGear = parseInt(document.body.getAttribute("TRANS"));
     const Gear = parseInt(document.body.getAttribute("GEAR"));
 
     if (Gear > 0) {
@@ -27,18 +29,23 @@ GearDownButton.addEventListener("click", () => {
 
 var Speed = 0;
 function Loop() {
+    const Idle = parseInt(document.body.getAttribute("IDLE"))
     const Gear = parseInt(document.body.getAttribute("GEAR"));
     const Rpm = parseInt(document.body.getAttribute("RPM"));
+    const MaxGear = parseInt(document.body.getAttribute("TRANS"));
+
+    GearLabel.innerHTML = `${Gear} / ${MaxGear}`;
 
     if (Gear > 0) {
-        const NewRPM = Rpm - (Rpm / (Gear * 100)) / 1000;
+        const NewRPM = Rpm - ((Rpm / (Gear * 100)) / 1000);
         document.body.setAttribute("RPM", NewRPM);
-        Speed += (Rpm / (Gear * 25)) / 1000;
-    } else {
-        if (Speed > 0) {
-            Speed -= 0.25;
-        }
+        Speed += Math.abs(((Rpm - Idle) / (Gear * 25)) / 1000);
     }
+
+    if (Speed > 0) {
+        Speed -= (0.0625 / 2);
+    }
+
     window.Speed = Speed;
     SpeedDial.setAttribute("value", Speed);
 

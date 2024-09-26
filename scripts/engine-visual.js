@@ -44,7 +44,7 @@ function LoadEngine() {
     };
     EngineStats.innerHTML = `Inline ${Cylinders}, ${Math.abs(Liters).toFixed(1)}L`;
 
-    document.body.setAttribute("FUEL", "100");
+    document.body.setAttribute("FUEL", "50");
 
     GenerateEngine(Cylinders);
 }

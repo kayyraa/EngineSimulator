@@ -1,17 +1,14 @@
 const StrokeGraph = document.getElementById("StrokeGraph");
 const SpeedGraph = document.getElementById("SpeedGraph");
 const FuelGraph = document.getElementById("FuelGraph");
-const TimingGraph = document.getElementById("TimingGraph");
 
 let StrokeChart;
 let SpeedChart;
 let FuelChart;
-let TimingChart;
 let StrokeTime = [];
 let StrokeForce = [];
 let SpeedData = [];
 let FuelData = [];
-let TimingData = [];
 let CurrentTime = 1;
 let LastUpdate = 0;
 const UpdateInterval = 100;
@@ -100,34 +97,6 @@ function InitChart() {
             }
         }
     });
-
-    TimingChart = new Chart(TimingGraph, {
-        type: "line",
-        data: {
-            labels: StrokeTime,
-            datasets: [{
-                fill: false,
-                lineTension: 0.3,
-                backgroundColor: "transparent",
-                borderColor: "rgb(155, 55, 155)",
-                data: TimingData
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: {
-                duration: 100,
-                easing: 'easeInOutQuad'
-            },
-            legend: { display: false },
-            tooltips: { enabled: false },
-            scales: {
-                xAxes: [{ display: false }],
-                yAxes: [{ display: false }]
-            }
-        }
-    });
 }
 
 function Update(timestamp) {
@@ -140,7 +109,6 @@ function Update(timestamp) {
         StrokeForce.push(Rpm);
         SpeedData.push(Speed);
         FuelData.push(Fuel);
-        TimingData.push(Rpm / Fuel * window.EngineStats.Cylinders / window.EngineStats.Liters);
         CurrentTime++;
 
         if (StrokeTime.length > 0 && (CurrentTime - StrokeTime[0] > 150)) {
@@ -148,7 +116,6 @@ function Update(timestamp) {
             StrokeForce.shift();
             SpeedData.shift();
             FuelData.shift();
-            TimingData.shift();
         }
 
         StrokeChart.data.labels = StrokeTime;
@@ -162,10 +129,6 @@ function Update(timestamp) {
         FuelChart.data.labels = StrokeTime;
         FuelChart.data.datasets[0].data = FuelData;
         FuelChart.update();
-
-        TimingChart.data.labels = StrokeTime;
-        TimingChart.data.datasets[0].data = TimingData;
-        TimingChart.update();
 
         LastUpdate = timestamp;
     }

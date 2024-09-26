@@ -55,11 +55,15 @@
                 <div>
                     <span>FUEL</span>
                     <span id="ECOLABEL">1.3L/s</span>
-                    <dial id="FUELDIAL" prefix="L" value="100" min="0" max="100"></dial>
+                    <dial id="FUELDIAL" prefix="L" percentage="true" value="100" min="0" max="50"></dial>
                 </div>
                 <div>
                     <span>Throttle</span>
-                    <dial id="THROTTLEDIAL" prefix="%" value="5" min="0" max="100"></dial>
+                    <img draggable="false" id="ThrottleValve" src="./images/ThrottleValve.svg">
+                </div>
+                <div>
+                    <span>Gear</span>
+                    <h1 id="GearLabel">0 / 6</h1>
                 </div>
             </div>
             <div id="EngineVisualizer">
@@ -78,10 +82,6 @@
                         <div>
                             <span>FUEL</span>
                             <canvas id="FuelGraph"></canvas>
-                        </div>
-                        <div>
-                            <span>STROKE</span>
-                            <canvas id="TimingGraph"></canvas>
                         </div>
                     </div>
                 </div>

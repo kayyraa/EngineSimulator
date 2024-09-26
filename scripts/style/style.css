@@ -92,6 +92,15 @@ dial {
     font-size: 2em;
 }
 
+#ThrottleValve {
+    background-color: rgb(30, 30, 30);
+    width: 12vh;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    align-self: center;
+    transition: transform 0.25s ease;
+}
+
 #EngineContainer > div > div {
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -116,7 +125,6 @@ dial {
     width: 8vh;
     font-size: 4vh;
     aspect-ratio: 1 / 1;
-    border-radius: 100%;
     background-color: rgba(255, 255, 255, 0.25);
 
     opacity: 0.25;
